@@ -4,6 +4,8 @@ const express = require("express");
 
 
 const app = express();
+app.use(express.json())
+
 
 //get all restaurants
 app.get("/api/v1/restaurants", (req, res) => {
@@ -19,14 +21,14 @@ app.get("/api/v1/restaurants", (req, res) => {
 });
 
 //get a restaurant
-app.get("/api/v1/restaurants/:restaurantid", (req, res)=>{
+app.get("/api/v1/restaurants/:restaurantid", (req, res) => {
   console.log(req.params);
 
 });
 
 //create a restaurant
-app.post("/api/v1/restaurants", (req, res)=>{
-  console.log(req);
+app.post("/api/v1/restaurants", (req, res) => {
+  console.log(req.body);
 
 });
 
