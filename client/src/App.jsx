@@ -9,12 +9,12 @@ const App = () => {
     <div>
       <Router>
         <Routes>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/restaurants/:id/update" component={UpdatePage} />
+          <Route exact path="/" element={<Home/>} />
+          <Route exact path="/restaurants/:id/update" element={<UpdatePage/>} />
           <Route
             exact
             path="/restaurants/:id"
-            component={RestaurantDetailPage}
+            element={<RestaurantDetailPage/>}
           />
         </Routes>
       </Router>
