@@ -31,8 +31,6 @@ app.get("/api/v1/restaurants", async (req, res) => {
 
   }
 
-
-
 });
 
 //get a restaurant
@@ -55,9 +53,6 @@ app.get("/api/v1/restaurants/:id", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
-
-
-
 });
 
 //create a restaurant
@@ -127,8 +122,6 @@ app.delete("/api/v1/restaurants/:id", async (req, res) => {
   });
 
 });
-
-
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`at ${port}`);
