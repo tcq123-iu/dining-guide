@@ -1,7 +1,10 @@
 require("dotenv").config();
 
 const express = require("express");
-const { restart } = require("nodemon");
+
+const db = require("./db");
+const morgan = require("morgan");
+
 
 
 const app = express();
@@ -9,7 +12,10 @@ app.use(express.json())
 
 
 //get all restaurants
-app.get("/api/v1/restaurants", (req, res) => {
+app.get("/api/v1/restaurants", async (req, res) => {
+
+  const result = await db.query("SELECT * FROM restaurants");
+  console.log(result);
 
   res.status(200).json({
     status: "success",
@@ -57,7 +63,7 @@ app.post("/api/v1/restaurants", (req, res) => {
 app.put("/api/v1/restaurants/:id", (req, res) => {
   console.log(req.params.id);
   console.log(req.body);
-  res.status(201).json({
+  res.status(200).json({
     status: "success",
     data: {
 
