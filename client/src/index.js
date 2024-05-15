@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { RestaurantsContextProvider } from "./context/RestaurantsContext";
 
-
-const root = ReactDOM.render(<App/>, document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+ReactDOM.render(
+	<React.StrictMode>
+		<RestaurantsContextProvider>
+			<App />
+		</RestaurantsContextProvider>
+	</React.StrictMode>,
+	document.getElementById("root")
 );
