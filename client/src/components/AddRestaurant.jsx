@@ -16,53 +16,53 @@ const AddRestaurant = () => {
         location,
         price_range: priceRange,
       });
+      console.log(response.data.data);
       addRestaurants(response.data.data.restaurant);
     } catch (err) {
       console.log(err);
     }
   };
-
   return (
-    <div className="container">
-      <form onSubmit={handleSubmit}>
-        <div className="row mb-3">
-          <div className="col-md-4">
+    <div class="mb-4">
+      <form action="">
+        <div class="row gx-3 gy-2 align-items-center">
+          <div class="col-sm-4">
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              className="form-control"
+              class="form-control"
               placeholder="Name"
             />
           </div>
-          <div className="col-md-4">
+          <div class="col-sm-4">
             <input
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="form-control"
+              class="form-control"
               type="text"
               placeholder="Location"
             />
           </div>
-          <div className="col-md-3">
+          <div class="col-sm-3">
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="form-select"
+              class="form-select" 
+              
             >
               <option disabled>Price Range</option>
-              <option value="1">$</option>
-              <option value="2">$$</option>
-              <option value="3">$$$</option>
-              <option value="4">$$$$</option>
-              <option value="5">$$$$$</option>
+              <option value="1">10.000-20.000</option>
+              <option value="2">20.000-30.000</option>
+              <option value="3">30.000-40.000</option>
+              <option value="4">40.000-50.000</option>
+              <option value="5">50.000-60.000</option>
+              <option value="6">60.000-70.000</option>
             </select>
           </div>
-          <div className="col-md-1">
-            <button type="submit" className="btn btn-primary">
-              Add
-            </button>
-          </div>
+          <div class="col-auto">
+    <button type="submit" class="btn btn-primary">Add</button>
+  </div>
         </div>
       </form>
     </div>
