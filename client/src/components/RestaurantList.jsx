@@ -10,17 +10,14 @@ const RestaurantList = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await RestaurantFinder.get("/");
         const response = await RestaurantFinder.get("/");
+        console.log(response.data.data);
         setRestaurants(response.data.data.restaurants);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
-  
+
     fetchData();
-  }, [setRestaurants]);
-   // Added setRestaurants to the dependency array
+  }, []);
 
   const handleDelete = async (e, id) => {
     e.stopPropagation();
@@ -80,7 +77,7 @@ const RestaurantList = (props) => {
                 >
                   <td>{restaurant.name}</td>
                   <td>{restaurant.location}</td>
-                  <td>{"$".repeat(restaurant.price_range)}</td>
+                  <td>{restaurant.price_range}</td>
                   <td>{renderRating(restaurant)}</td>
                   <td>
                     <button
