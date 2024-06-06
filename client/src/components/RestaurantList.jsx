@@ -6,7 +6,7 @@ import StarRating from "./StarRating";
 
 const RestaurantList = (props) => {
   const { restaurants, setRestaurants } = useContext(RestaurantsContext);
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,11 +35,11 @@ const RestaurantList = (props) => {
 
   const handleUpdate = (e, id) => {
     e.stopPropagation();
-    navigate.push(`/restaurants/${id}/update`);
+    navigate(`/restaurants/${id}/update`);
   };
 
   const handleRestaurantSelect = (id) => {
-    navigate.push(`/restaurants/${id}`);
+    navigate(`/restaurants/${id}`);
   };
 
   const renderRating = (restaurant) => {

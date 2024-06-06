@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import RestaurantFinder from "../apis/RestaurantFinder";
-import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { useLocation, useParams, useHistory } from "react-router-dom";
 
 const AddReview = () => {
   const { id } = useParams();
   const location = useLocation();
   console.log(location);
-  const navigate = useNavigate();
+  const history = useHistory();
   console.log(id);
 
   const [name, setName] = useState("");
@@ -21,8 +21,8 @@ const AddReview = () => {
         review: reviewText,
         rating,
       });
-      navigate.push("/");
-      navigate.push(location.pathname);
+      history.push("/");
+      history.push(location.pathname);
     } catch (err) {}
   };
   return (

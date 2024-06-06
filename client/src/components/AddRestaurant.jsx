@@ -6,12 +6,15 @@ const AddRestaurant = () => {
   const { addRestaurants } = useContext(RestaurantsContext);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [priceRange, setPriceRange] = useState("Price Range");
+  const [priceRange, setPriceRange] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await RestaurantFinder.post("/", {
+      const response = await <RestaurantsContext>
+
+        
+      </RestaurantsContext>.post("/", {
         name,
         location,
         price_range: priceRange,
@@ -23,45 +26,46 @@ const AddRestaurant = () => {
     }
   };
   return (
-    <div class="mb-4">
+    <div className="mb-4">
       <form action="">
-        <div class="row gx-3 gy-2 align-items-center">
-          <div class="col-sm-4">
+        <div className="row gx-3 gy-2 align-items-center">
+          <div className="col-sm-4">
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Name"
             />
           </div>
-          <div class="col-sm-4">
+          <div className="col-sm-4">
             <input
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              class="form-control"
+              className="form-control"
               type="text"
               placeholder="Location"
             />
           </div>
-          <div class="col-sm-3">
+          <div className="col-sm-3">
             <select
+              aria-label="label for the select"
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              class="form-select" 
+              className="form-select"
               
             >
               <option disabled>Price Range</option>
-              <option value="1">10.000-20.000</option>
-              <option value="2">20.000-30.000</option>
-              <option value="3">30.000-40.000</option>
-              <option value="4">40.000-50.000</option>
-              <option value="5">50.000-60.000</option>
-              <option value="6">60.000-70.000</option>
+              <option value="1">10</option>
+              <option value="2">20</option>
+              <option value="3">30</option>
+              <option value="4">40</option>
+              <option value="5">50</option>
+              <option value="6">60</option>
             </select>
           </div>
-          <div class="col-auto">
-    <button type="submit" class="btn btn-primary">Add</button>
+          <div className="col-auto">
+    <button type = "submit" className="btn btn-primary">Add</button>
   </div>
         </div>
       </form>
