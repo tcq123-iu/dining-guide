@@ -6,21 +6,21 @@ const AddRestaurant = () => {
   const { addRestaurants } = useContext(RestaurantsContext);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [priceRange, setPriceRange] = useState("");
+  const [priceRange, setPriceRange] = useState("Price Range");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await <RestaurantsContext>
-
-        
-      </RestaurantsContext>.post("/", {
+      const response = await RestaurantFinder.post("/", {
         name,
         location,
         price_range: priceRange,
       });
+      
+
       console.log(response.data.data);
-      addRestaurants(response.data.data.restaurant);
+      
+      addRestaurants(response.data.data.restaurants);
     } catch (err) {
       console.log(err);
     }
@@ -56,16 +56,18 @@ const AddRestaurant = () => {
               
             >
               <option disabled>Price Range</option>
-              <option value="1">10</option>
-              <option value="2">20</option>
-              <option value="3">30</option>
-              <option value="4">40</option>
-              <option value="5">50</option>
-              <option value="6">60</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="30">30</option>
+              <option value="40">40</option>
+              <option value="50">50</option>
+              <option value="60">60</option>
             </select>
           </div>
           <div className="col-auto">
-    <button type = "submit" className="btn btn-primary">Add</button>
+                  
+    <button  onClick={handleSubmit} type = "submit" className="btn btn-primary">Add</button>
+
   </div>
         </div>
       </form>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import RestaurantFinder from "../apis/RestaurantFinder";
-import { useLocation, useParams, useHistory } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 
 const AddReview = () => {
   const { id } = useParams();
   const location = useLocation();
   console.log(location);
-  const history = useHistory();
+  const navigate = useNavigate();
   console.log(id);
 
   const [name, setName] = useState("");
@@ -21,8 +21,11 @@ const AddReview = () => {
         review: reviewText,
         rating,
       });
-      history.push("/");
-      history.push(location.pathname);
+      // console.log(response.data.data);
+      // console.log(response.data.data.reviews);
+      
+      navigate("/");
+      navigate(location.pathname);
     } catch (err) {}
   };
   return (
@@ -35,7 +38,7 @@ const AddReview = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               id="name"
-              placeholder="name"
+              placeholder="Name"
               type="text"
               className="form-control"
             />
@@ -46,7 +49,8 @@ const AddReview = () => {
               value={rating}
               onChange={(e) => setRating(e.target.value)}
               id="rating"
-              className="custom-select"
+              className="form-select"
+              aria-label="label for the select"
             >
               <option disabled>Rating</option>
               <option value="1">1</option>
