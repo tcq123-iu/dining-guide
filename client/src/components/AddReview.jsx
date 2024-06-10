@@ -21,8 +21,7 @@ const AddReview = () => {
         review: reviewText,
         rating,
       });
-      // console.log(response.data.data);
-      // console.log(response.data.data.reviews);
+
       
       navigate("/");
       navigate(location.pathname);
