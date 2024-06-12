@@ -68,8 +68,8 @@ app.post("/api/v1/restaurants", async (req, res) => {
   console.log(req.body);
   try {
     const results = await db.query(
-      "insert into restaurants(name, location, price_range) values ($1, $2,$3) returning *",
-      [req.body.name, req.body.location, req.body.price_range]
+      "insert into restaurants(name, location, price_range, phone_number, cuisine_type, opening_hours,closing_hours) values ($1, $2,$3,$4, $5, $6,$7) returning *",
+      [req.body.name, req.body.location, req.body.price_range, req.body.phone_number, req.body.cuisine_type,req.body.opening_hours, req.body.closing_hours]
     );
 
     res.status(201).json({
@@ -90,8 +90,8 @@ app.put("/api/v1/restaurants/:id", async (req, res) => {
 
   try {
     const results = await db.query(
-      "update restaurants set name = $1, location = $2, price_range = $3 where id = $4 returning *",
-      [req.body.name, req.body.location, req.body.price_range, req.params.id]
+      "update restaurants set name = $1, location = $2, price_range = $3,phone_number=$4, cuisine_type=$5, opening_hours=$6, closing_hours=$7  where id = $8 returning *",
+      [req.body.name, req.body.location, req.body.price_range, req.body.phone_number, req.body.cuisine_type,req.body.opening_hours, req.body.closing_hours, req.params.id]
     );
 
     res.status(200).json({

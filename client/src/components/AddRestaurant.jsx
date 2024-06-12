@@ -6,7 +6,11 @@ const AddRestaurant = () => {
   const { addRestaurants } = useContext(RestaurantsContext);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
-  const [priceRange, setPriceRange] = useState("Price Range");
+  const [priceRange, setPriceRange] = useState("Minimum Price");
+  const[phone_number, setPhoneNumber] = useState("");
+  const[cuisine_type, setCuisineType] = useState("");
+  const[opening_hours, setOpeningHours] = useState("");
+  const[closing_hours, setClosingHours] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +19,10 @@ const AddRestaurant = () => {
         name,
         location,
         price_range: priceRange,
+        phone_number,
+        cuisine_type,
+        opening_hours,
+        closing_hours,
       });
       
 
@@ -29,7 +37,7 @@ const AddRestaurant = () => {
     <div className="mb-4">
       <form action="">
         <div className="row gx-3 gy-2 align-items-center">
-          <div className="col-sm-4">
+          <div className="col">
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -38,7 +46,7 @@ const AddRestaurant = () => {
               placeholder="Name"
             />
           </div>
-          <div className="col-sm-4">
+          <div className="col">
             <input
               value={location}
               onChange={(e) => setLocation(e.target.value)}
@@ -47,7 +55,7 @@ const AddRestaurant = () => {
               placeholder="Location"
             />
           </div>
-          <div className="col-sm-3">
+          <div className="col">
             <select
               aria-label="label for the select"
               value={priceRange}
@@ -68,6 +76,46 @@ const AddRestaurant = () => {
               <option value="100">100</option>
             </select>
           </div>
+          <div className="col">
+            <input
+              value={phone_number}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="phone number"
+            />
+          </div>
+          <div className="col">
+            <input
+              value={cuisine_type}
+              onChange={(e) => setCuisineType(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="Cuisine Type"
+            />
+          </div>
+          <div className="col">
+            <input
+              value={opening_hours}
+              onChange={(e) => setOpeningHours(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="Opening Hours"
+            />
+          </div>
+          <div className="col">
+            <input
+              value={closing_hours}
+              onChange={(e) => setClosingHours(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="Closing Hours"
+            />
+          </div>
+
+
+
+
           <div className="col-auto">
                   
     <button  onClick={handleSubmit} type = "submit" className="btn btn-primary">Add</button>

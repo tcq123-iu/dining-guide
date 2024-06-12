@@ -61,10 +61,15 @@ const RestaurantList = (props) => {
           <tr className="bg-primary">
             <th scope="col">Restaurant</th>
             <th scope="col">Location</th>
-            <th scope="col">Price Range</th>
+            <th scope="col">Minimum Price</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Cuisine Type</th>
+            <th scope="col">Opening Hours</th>
+            <th scope="col">Closing Hours</th>
             <th scope="col">Ratings</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
+  
           </tr>
         </thead>
         <tbody>
@@ -78,6 +83,10 @@ const RestaurantList = (props) => {
                   <td>{restaurant.name}</td>
                   <td>{restaurant.location}</td>
                   <td>{restaurant.price_range}</td>
+                  <td>{restaurant.phone_number}</td>
+                  <td>{restaurant.cuisine_type}</td>
+                  <td>{restaurant.opening_hours}</td>
+                  <td>{restaurant.closing_hours}</td>
                   <td>{renderRating(restaurant)}</td>
                   <td>
                     <button
