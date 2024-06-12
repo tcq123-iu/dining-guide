@@ -42,14 +42,14 @@ const RestaurantList = (props) => {
     navigate(`/restaurants/${id}`);
   };
 
-  const renderRating = (restaurant) => {
-    if (!restaurant.count) {
+  const renderRating = (restaurants) => {
+    if (!restaurants.count) {
       return <span className="text-warning">0 reviews</span>;
     }
     return (
       <>
-        <StarRating rating={restaurant.id} />
-        <span className="text-warning ml-1">({restaurant.count})</span>
+        <StarRating rating={restaurants.average_rating} />
+        <span className="text-warning ml-1">({restaurants.count})</span>
       </>
     );
   };

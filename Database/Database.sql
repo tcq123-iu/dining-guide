@@ -1,5 +1,5 @@
 create table restaurants(
-  id bigserial not null ,
+  id bigserial not null primary key  ,
   name varchar(50) not null,
   location varchar(50) not null,
   price_range int not null

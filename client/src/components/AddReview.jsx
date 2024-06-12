@@ -22,8 +22,7 @@ const AddReview = () => {
         rating,
       });
 
-      
-      navigate("/");
+      navigate('/');
       navigate(location.pathname);
     } catch (err) {}
   };
