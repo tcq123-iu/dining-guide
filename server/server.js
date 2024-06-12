@@ -123,8 +123,8 @@ app.delete("/api/v1/restaurants/:id", async (req, res) => {
 app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
   try {
     const newReview = await db.query(
-      "INSERT INTO reviews (restaurant_id, name, review, rating) values ($1, $2, $3, $4) returning *;",
-      [req.params.id, req.body.name, req.body.review, req.body.rating]
+      "INSERT INTO reviews (restaurant_id, name, review, rating,u_id, date) values ($1, $2, $3, $4, $5, $6) returning *;",
+      [req.params.id, req.body.name, req.body.review, req.body.rating, req.params.id, req.body.date]
     );
     console.log(newReview);
     res.status(201).json({
