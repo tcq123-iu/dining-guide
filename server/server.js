@@ -138,6 +138,24 @@ app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
   }
 });
 
+//add a user 
+app.post("/", async (req, res) => {
+  try{
+    const newUser = await db.query (
+      "INSERT INTO users () values () returning *;",
+      [ req.body.name, req.body.email, req.body.password ]
+    );
+    res.status(201).json({
+      status: "success",
+      data: {
+        restaurants: results.rows[0],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`at ${port}`);
