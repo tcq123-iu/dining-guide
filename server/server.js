@@ -139,6 +139,48 @@ app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
     console.log(err);
   }
 });
+//login
+
+app.post("/login", async (req, res) => {
+  console.log(req.body);
+  try {
+    const results = await db.query(
+      "select * from users where email = $1 and password = $2",
+      [req.body.email, req.body.password]
+    );
+    console.log(results);
+    res.status(200).json({
+      status: "success",
+      data: {
+        user: results.rows[0],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+
+//register
+
+app.post("/register", async (req, res) => {
+  console.log(req.body);
+  try {
+    const results = await db.query(
+      "insert into users(name, email, password) values ($1, $2,$3) returning *",
+      [req.body.name, req.body.email, req.body.password]
+    );
+
+    res.status(201).json({
+      status: "success",
+      data: {
+        user: results.rows[0],
+      },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
