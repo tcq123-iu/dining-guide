@@ -12,7 +12,7 @@ app.use(express.json());
 
 
 //get all restaurants
-app.get("/api/v1/restaurants", async (req, res) => {
+app.get("/api/v1/restaurants/home", async (req, res) => {
   try {
 
     const restaurantRatingsData = await db.query(
@@ -141,7 +141,7 @@ app.post("/api/v1/restaurants/:id/addReview", async (req, res) => {
 });
 //login
 
-app.post("/login", async (req, res) => {
+app.post("/", async (req, res) => {
   console.log(req.body);
   try {
     const results = await db.query(
@@ -167,14 +167,14 @@ app.post("/register", async (req, res) => {
   console.log(req.body);
   try {
     const results = await db.query(
-      "insert into users(name, email, password) values ($1, $2,$3) returning *",
-      [req.body.name, req.body.email, req.body.password]
+      "insert into users(username, email, password) values ($1, $2,$3) returning *",
+      [req.body.username, req.body.email, req.body.password]
     );
 
     res.status(201).json({
       status: "success",
       data: {
-        user: results.rows[0],
+        users: results.rows[0],
       },
     });
   } catch (err) {

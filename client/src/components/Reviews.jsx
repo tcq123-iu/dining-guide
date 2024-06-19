@@ -12,14 +12,11 @@ const Reviews = ({ reviews }) => {
             style={{ maxWidth: "30%" }}
           >
             <div className="card-header d-flex justify-content-between">
-            
               <span>{review.name}</span>
 
               <span>
                 <StarRating rating={review.rating} />
               </span>
-
-             
             </div>
             <span>{review.date}</span>
             <div className="card-body">
@@ -28,7 +25,6 @@ const Reviews = ({ reviews }) => {
           </div>
         );
       })}
-
     </div>
   );
 };
